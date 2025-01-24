@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Page - JIT</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, Students</h1>
+        <form method="POST">
+            <label for="year">Select Year:</label>
+            <select name="year" id="year" required>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+            </select>
+            
+            <label for="department">Select Department:</label>
+            <select name="department" id="department" required>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="MECH">MECH</option>
+            </select>
+            
+            <button type="submit">View Timetable</button>
+        </form>
+        {% if class_name and class_timetable %}
+            <h2>Timetable for {{ class_name }}</h2>
+            <ul>
+                {% for period, details in class_timetable.items() %}
+                    <li>Period {{ period }}: {{ details.subject }} - {{ details.class }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <a href="/">Back to Login</a>
+    </div>
+</body>
+</html>

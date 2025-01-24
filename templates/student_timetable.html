@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Timetable - JIT</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Class Timetable</h1>
+        <h2>{{ class_name }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Period</th>
+                    <th>Subject</th>
+                    <th>Staff</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for period, details in class_timetable.items() %}
+                    <tr>
+                        <td>{{ period }}</td>
+                        <td>{{ details.subject }}</td>
+                        <td>{{ details.class }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- Add Back to Login Button Here -->
+        <a href="/" class="back-button">Back to Login</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Page - JIT</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, Staff</h1>
+        <form method="POST">
+            <label for="staff_name">Select Staff Name:</label>
+            <select name="staff_name" id="staff_name" required>
+                {% for name in staff_names %}
+                    <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="period">Select Period:</label>
+            <select name="period" id="period" required>
+                <option value="1">Period 1</option>
+                <option value="2">Period 2</option>
+                <option value="3">Period 3</option>
+                <option value="4">Period 4</option>
+                <option value="5">Period 5</option>
+                <option value="6">Period 6</option>
+                <option value="7">Period 7</option>
+                <option value="8">Period 8</option>
+            </select>
+            
+            <button type="submit">Check</button>
+        </form>
+        <a href="/">Back to Login</a>
+    </div>
+</body>
+</html>
