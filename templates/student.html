@@ -3,39 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Page - JIT</title>
+    <title>Student Dashboard - JIT</title>
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome, Students</h1>
-        <form method="POST">
-            <label for="year">Select Year:</label>
-            <select name="year" id="year" required>
-                <option value="1">1st Year</option>
-                <option value="2">2nd Year</option>
-                <option value="3">3rd Year</option>
-                <option value="4">4th Year</option>
-            </select>
-            
-            <label for="department">Select Department:</label>
-            <select name="department" id="department" required>
-                <option value="CSE">CSE</option>
-                <option value="ECE">ECE</option>
-                <option value="MECH">MECH</option>
-            </select>
-            
-            <button type="submit">View Timetable</button>
-        </form>
-        {% if class_name and class_timetable %}
-            <h2>Timetable for {{ class_name }}</h2>
-            <ul>
-                {% for period, details in class_timetable.items() %}
-                    <li>Period {{ period }}: {{ details.subject }} - {{ details.class }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <a href="/">Back to Login</a>
+        <header class="header">
+            <h1>Welcome, Students</h1>
+            <p>Select your year and department to view the timetable</p>
+        </header>
+
+        <main class="main-content">
+            <form method="POST" class="form">
+                <div class="form-group">
+                    <label for="year">Select Year:</label>
+                    <select name="year" id="year" required>
+                        <option value="" disabled selected>Select Year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Select Department:</label>
+                    <select name="department" id="department" required>
+                        <option value="" disabled selected>Select Department</option>
+                        <option value="CSE">CSE</option>
+                        <option value="ECE">ECE</option>
+                        <option value="MECH">MECH</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">View Timetable</button>
+            </form>
+
+            {% if class_name and class_timetable %}
+                <section class="timetable">
+                    <h2>Timetable for {{ class_name }}</h2>
+                    <ul class="timetable-list">
+                        {% for period, details in class_timetable.items() %}
+                            <li>
+                                <strong>Period {{ period }}:</strong> 
+                                {{ details.subject }} - {{ details.class }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            {% endif %}
+        </main>
+
+        <footer class="footer">
+            <a href="/" class="btn back-button">Back to Login</a>
+        </footer>
     </div>
 </body>
 </html>
