@@ -9,16 +9,19 @@
 <body>
     <div class="container">
         <h1>Welcome, Staff</h1>
-        <form method="POST">
-            <label for="staff_name">Select Staff Name:</label>
-            <select name="staff_name" id="staff_name" required>
+
+        <!-- Timetable View Section -->
+        <h2>View Your Timetable</h2>
+        <form method="POST" action="/view_timetable">
+            <label for="staff_name_view">Select Staff Name:</label>
+            <select name="staff_name_view" id="staff_name_view" required>
                 {% for name in staff_names %}
                     <option value="{{ name }}">{{ name }}</option>
                 {% endfor %}
             </select>
             
-            <label for="period">Select Period:</label>
-            <select name="period" id="period" required>
+            <label for="period_view">Select Period:</label>
+            <select name="period_view" id="period_view" required>
                 <option value="1">Period 1</option>
                 <option value="2">Period 2</option>
                 <option value="3">Period 3</option>
@@ -28,9 +31,72 @@
                 <option value="7">Period 7</option>
                 <option value="8">Period 8</option>
             </select>
-            
-            <button type="submit" class="btn">Check</button>
+
+            <button type="submit" class="btn">View Timetable</button>
         </form>
+
+        <!-- Timetable Display Section -->
+        {% if timetable_info %}
+        <h3>Timetable for {{ timetable_info.staff_name }} - Period {{ timetable_info.period }}</h3>
+        <table>
+            <tr>
+                <th>Class</th>
+                <th>Subject</th>
+            </tr>
+            <tr>
+                <td>{{ timetable_info.class }}</td>
+                <td>{{ timetable_info.subject }}</td>
+            </tr>
+        </table>
+        {% endif %}
+
+        <!-- Timetable Edit Section -->
+        <h2>Edit Timetable</h2>
+        <form method="POST" action="/edit_timetable">
+            <label for="staff_name_edit_timetable">Select Staff Name:</label>
+            <select name="staff_name_edit_timetable" id="staff_name_edit_timetable" required>
+                {% for name in staff_names %}
+                    <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="period_edit">Select Period:</label>
+            <select name="period_edit" id="period_edit" required>
+                <option value="1">Period 1</option>
+                <option value="2">Period 2</option>
+                <option value="3">Period 3</option>
+                <option value="4">Period 4</option>
+                <option value="5">Period 5</option>
+                <option value="6">Period 6</option>
+                <option value="7">Period 7</option>
+                <option value="8">Period 8</option>
+            </select>
+
+            <label for="class_edit">Class:</label>
+            <input type="text" name="class_edit" id="class_edit" required>
+
+            <label for="subject_edit">Subject:</label>
+            <input type="text" name="subject_edit" id="subject_edit" required>
+
+            <button type="submit" class="btn">Update Timetable</button>
+        </form>
+
+        <!-- Staff Edit Section -->
+        <h2>Edit Staff Details</h2>
+        <form method="POST" action="/edit_staff">
+            <label for="staff_name_edit_staff">Select Staff Name:</label>
+            <select name="staff_name_edit_staff" id="staff_name_edit_staff" required>
+                {% for name in staff_names %}
+                    <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="department_edit">Department:</label>
+            <input type="text" name="department_edit" id="department_edit" required>
+
+            <button type="submit" class="btn">Update Staff</button>
+        </form>
+
         <a href="/" class="btn nav-button">Back to Login</a>
     </div>
 </body>

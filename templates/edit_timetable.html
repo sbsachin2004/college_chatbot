@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Timetable</title>
+</head>
+<body>
+    <h1>Edit Timetable</h1>
+    <form method="POST">
+        <label for="staff_name">Select Staff Name:</label>
+        <select name="staff_name" id="staff_name" required>
+            {% for name in staff_names %}
+                <option value="{{ name }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="period">Select Period:</label>
+        <input type="number" name="period" id="period" required>
+
+        <label for="class">Class:</label>
+        <input type="text" name="class" id="class" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" id="subject" required>
+
+        <button type="submit">Update Timetable</button>
+    </form>
+    <a href="/staff">Back to Staff Page</a>
+</body>
+</html>
