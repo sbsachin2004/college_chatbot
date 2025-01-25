@@ -60,7 +60,7 @@ select:focus, input:focus {
 /* Button Styles */
 button, .btn {
     display: inline-block;
-    background-color: #007bff;
+    background: linear-gradient(90deg, #007bff, #0056b3);
     color: white;
     padding: 15px 30px;
     font-size: 18px;
@@ -69,36 +69,129 @@ button, .btn {
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
 }
 
-button:hover, .btn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+.btn:hover {
+    background: linear-gradient(90deg, #0056b3, #007bff);
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-45deg);
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.btn:hover::before {
+    left: 150%;
 }
 
 /* Navigation Button Styles */
 .nav-button {
-    background-color: #28a745;
+    background: linear-gradient(45deg, #28a745, #218838);
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-button:hover {
-    background-color: #218838;
+    background: linear-gradient(45deg, #218838, #28a745);
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.nav-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-45deg);
+    transition: all 0.5s ease-in-out;
+}
+
+.nav-button:hover::before {
+    left: 150%;
 }
 
 /* Back Button Style */
 .back-button {
-    background-color: #6c757d;
+    background: linear-gradient(45deg, #6c757d, #4a5568);
     padding: 10px 20px;
     font-size: 16px;
     margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.back-button::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+    animation: glow-effect 3s infinite;
+    transition: all 0.5s ease-in-out;
 }
 
 .back-button:hover {
-    background-color: #5a6268;
+    background: linear-gradient(45deg, #4a5568, #6c757d);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.back-button:active {
+    transform: translateY(2px) scale(0.98);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes glow-effect {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
 }
 
 /* Table Styles */
